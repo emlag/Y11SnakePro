@@ -7,7 +7,7 @@ import org.junit.Test;
 public class SnakeProBrainTest_AdvancePede {
 
 	@Test
-	public void test_eatSpam() {
+	public void test_eatFood() {
 		SnakeProBrain brain = SnakeProBrain.getTestGame(TestGame.G1);
 		brain.updateSnake();
 		String boardString = brain.testing_toStringSnakeProData();
@@ -23,7 +23,7 @@ public class SnakeProBrainTest_AdvancePede {
 	}
 	
 	@Test
-	public void test_noSpamEaten() {
+	public void test_noFoodEaten() {
 		SnakeProBrain brain = SnakeProBrain.getTestGame(TestGame.G2);
 		brain.updateSnake();
 		String boardString = brain.testing_toStringSnakeProData();

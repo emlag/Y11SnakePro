@@ -14,12 +14,12 @@ public class BoardCellTest {
 	public void testToString() {
 		BoardCell wallCell = new BoardCell(10, 15, CellType.WALL);
 		BoardCell openCell = new BoardCell(10, 15, CellType.OPEN);
-		BoardCell spamCell = new BoardCell(10, 15, CellType.SPAM);
+		BoardCell foodCell = new BoardCell(10, 15, CellType.FOOD);
 		BoardCell bodyCell = new BoardCell(10, 15, CellType.BODY);
 		BoardCell headCell = new BoardCell(10, 15, CellType.HEAD);
 		assertEquals("[10, 15, *]", wallCell.toString());  
 		assertEquals("[10, 15,  ]", openCell.toString());  
-		assertEquals("[10, 15, X]", spamCell.toString());  
+		assertEquals("[10, 15, X]", foodCell.toString());
 		assertEquals("[10, 15, B]", bodyCell.toString());  
 		assertEquals("[10, 15, H]", headCell.toString());  
 	}
@@ -27,12 +27,12 @@ public class BoardCellTest {
 	public void testToStringHelper() {
 		BoardCell wallCell = new BoardCell(10, 15, CellType.WALL);
 		BoardCell openCell = new BoardCell(10, 15, CellType.OPEN);
-		BoardCell spamCell = new BoardCell(10, 15, CellType.SPAM);
+		BoardCell foodCell = new BoardCell(10, 15, CellType.FOOD);
 		BoardCell bodyCell = new BoardCell(10, 15, CellType.BODY);
 		BoardCell headCell = new BoardCell(10, 15, CellType.HEAD);
 		assertEquals("*", wallCell.toStringType());  
 		assertEquals(" ", openCell.toStringType());  
-		assertEquals("X", spamCell.toStringType());  
+		assertEquals("X", foodCell.toStringType());
 		assertEquals("B", bodyCell.toStringType());  
 		assertEquals("H", headCell.toStringType()); 
 	}
@@ -57,7 +57,7 @@ public class BoardCellTest {
 		BoardCell wallCell = new BoardCell(10, 15, CellType.WALL);
 		assertTrue(wallCell.isWall());
 		assertFalse(wallCell.isOpen());
-		assertFalse(wallCell.isSpam());
+		assertFalse(wallCell.isFood());
 		assertFalse(wallCell.isBody());
 		assertFalse(wallCell.isHead());
 	}
@@ -67,25 +67,25 @@ public class BoardCellTest {
 		BoardCell openCell = new BoardCell(10, 15, CellType.OPEN);
 		assertFalse(openCell.isWall());
 		assertTrue(openCell.isOpen());
-		assertFalse(openCell.isSpam());
+		assertFalse(openCell.isFood());
 		assertFalse(openCell.isBody());
 		assertFalse(openCell.isHead());
 	}
 	@Test
-	public void testType_Spam() {
-		BoardCell spamCell = new BoardCell(10, 15, CellType.SPAM);
-		assertFalse(spamCell.isWall());
-		assertTrue(spamCell.isOpen()); // Spam is open
-		assertTrue(spamCell.isSpam());
-		assertFalse(spamCell.isBody());
-		assertFalse(spamCell.isHead());
+	public void testType_Food() {
+		BoardCell foodCell = new BoardCell(10, 15, CellType.FOOD);
+		assertFalse(foodCell.isWall());
+		assertTrue(foodCell.isOpen()); // Food is open
+		assertTrue(foodCell.isFood());
+		assertFalse(foodCell.isBody());
+		assertFalse(foodCell.isHead());
 	}
 	@Test
 	public void testType_Body() {
 		BoardCell bodyCell = new BoardCell(10, 15, CellType.BODY);
 		assertFalse(bodyCell.isWall());
 		assertFalse(bodyCell.isOpen());
-		assertFalse(bodyCell.isSpam());
+		assertFalse(bodyCell.isFood());
 		assertTrue(bodyCell.isBody());
 		assertFalse(bodyCell.isHead());
 	}
@@ -94,7 +94,7 @@ public class BoardCellTest {
 		BoardCell headCell = new BoardCell(10, 15, CellType.HEAD);
 		assertFalse(headCell.isWall());
 		assertFalse(headCell.isOpen());
-		assertFalse(headCell.isSpam());
+		assertFalse(headCell.isFood());
 		assertFalse(headCell.isBody());
 		assertTrue(headCell.isHead());
 	}
@@ -110,9 +110,9 @@ public class BoardCellTest {
 		assertEquals(Preferences.COLOR_OPEN, openCell.getCellColor());
 	}
 	@Test
-	public void testCellColor_Spam() {
-		BoardCell spamCell = new BoardCell(10, 15, CellType.SPAM);
-		assertEquals(Preferences.COLOR_SPAM, spamCell.getCellColor());
+	public void testCellColor_Food() {
+		BoardCell foodCell = new BoardCell(10, 15, CellType.FOOD);
+		assertEquals(Preferences.COLOR_FOOD, foodCell.getCellColor());
 	}
 	@Test
 	public void testCellColor_Body() {
@@ -135,17 +135,17 @@ public class BoardCellTest {
 		cell.becomeOpen();
 		assertFalse(cell.isWall());
 		assertTrue(cell.isOpen());
-		assertFalse(cell.isSpam());
+		assertFalse(cell.isFood());
 		assertFalse(cell.isBody());
 		assertFalse(cell.isHead());
 	}
 	@Test
-	public void testBecomeOpen_Spam() {
-		BoardCell cell = new BoardCell(10, 15, CellType.SPAM);
+	public void testBecomeOpen_Food() {
+		BoardCell cell = new BoardCell(10, 15, CellType.FOOD);
 		cell.becomeOpen();
 		assertFalse(cell.isWall());
 		assertTrue(cell.isOpen());
-		assertFalse(cell.isSpam());
+		assertFalse(cell.isFood());
 		assertFalse(cell.isBody());
 		assertFalse(cell.isHead());
 	}
@@ -155,7 +155,7 @@ public class BoardCellTest {
 		cell.becomeOpen();
 		assertFalse(cell.isWall());
 		assertTrue(cell.isOpen());
-		assertFalse(cell.isSpam());
+		assertFalse(cell.isFood());
 		assertFalse(cell.isBody());
 		assertFalse(cell.isHead());
 	}
@@ -165,18 +165,18 @@ public class BoardCellTest {
 		cell.becomeOpen();
 		assertFalse(cell.isWall());
 		assertTrue(cell.isOpen());
-		assertFalse(cell.isSpam());
+		assertFalse(cell.isFood());
 		assertFalse(cell.isBody());
 		assertFalse(cell.isHead());
 	}
 
 	@Test
-	public void testBecomeSpam_Open() {
+	public void testBecomeFood_Open() {
 		BoardCell cell = new BoardCell(10, 15, CellType.OPEN);
-		cell.becomeSpam();
+		cell.becomeFood();
 		assertFalse(cell.isWall());
 		assertTrue(cell.isOpen());
-		assertTrue(cell.isSpam());
+		assertTrue(cell.isFood());
 		assertFalse(cell.isBody());
 		assertFalse(cell.isHead());
 	}
@@ -186,7 +186,7 @@ public class BoardCellTest {
 		cell.becomeHead();
 		assertFalse(cell.isWall());
 		assertFalse(cell.isOpen()); 
-		assertFalse(cell.isSpam());
+		assertFalse(cell.isFood());
 		assertFalse(cell.isBody());
 		assertTrue(cell.isHead());
 	}
@@ -196,7 +196,7 @@ public class BoardCellTest {
 		cell.becomeHead();
 		assertFalse(cell.isWall());
 		assertFalse(cell.isOpen()); 
-		assertFalse(cell.isSpam());
+		assertFalse(cell.isFood());
 		assertFalse(cell.isBody());
 		assertTrue(cell.isHead());
 	}
@@ -206,7 +206,7 @@ public class BoardCellTest {
 		cell.becomeBody();
 		assertFalse(cell.isWall());
 		assertFalse(cell.isOpen()); 
-		assertFalse(cell.isSpam());
+		assertFalse(cell.isFood());
 		assertTrue(cell.isBody());
 		assertFalse(cell.isHead());
 	}
@@ -216,7 +216,7 @@ public class BoardCellTest {
 		cell.becomeBody();
 		assertFalse(cell.isWall());
 		assertFalse(cell.isOpen()); 
-		assertFalse(cell.isSpam());
+		assertFalse(cell.isFood());
 		assertTrue(cell.isBody());
 		assertFalse(cell.isHead());
 	}

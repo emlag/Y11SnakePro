@@ -8,7 +8,7 @@ import org.junit.Test;
 
 public class SnakeProBrainTest_Reverse {
 	// Want pictures of the test boards?
-	// http://tinyurl.com/spampedeTestBoards
+	// https://tinyurl.com/wl4zelg
 	@Test
 	public void test_ReverseNorth() {
 		SnakeProBrain brain = SnakeProBrain.getTestGame(TestGame.G14);

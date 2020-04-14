@@ -7,12 +7,12 @@ import org.junit.Test;
 
 public class SnakeProBrainTest_CheckParentsBFS {
 	// Want pictures of the test boards?
-	// http://tinyurl.com/spampedeTestBoards
+	// https://tinyurl.com/wl4zelg
 
 	// IMPORTANT:
-	// The tests in this file assume the BFS runs until spam
+	// The tests in this file assume the BFS runs until food
 	// is dequeued, rather than stopping as soon as you first
-	// find a spam cell. 
+	// find a food cell.
 	//
 	// If you write cleverer code that stops early,
 	// most or all of these tests will fail...and that's OK!

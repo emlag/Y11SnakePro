@@ -7,7 +7,7 @@ import org.junit.Test;
 
 public class SnakeProBrainTest_GetNextCellFromBFS {
 	// Want pictures of the test boards?
-	// http://tinyurl.com/spampedeTestBoards
+	// https://tinyurl.com/wl4zelg
 
 	@Test
 	public void testG1_BFS() {

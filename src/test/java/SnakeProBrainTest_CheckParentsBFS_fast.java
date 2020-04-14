@@ -7,10 +7,10 @@ import org.junit.Test;
 
 public class SnakeProBrainTest_CheckParentsBFS_fast {
 	// Want pictures of the test boards?
-	// http://tinyurl.com/spampedeTestBoards
+	// https://tinyurl.com/wl4zelg
 
 	// IMPORTANT:
-	// The tests in this file assume the BFS stops as soon as spam is
+	// The tests in this file assume the BFS stops as soon as food is
 	// enqueued, rather than waiting for it to leave the queue.
 	//
 	// If you write the algorithm as suggested in class, most
