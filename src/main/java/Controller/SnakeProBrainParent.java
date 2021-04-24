@@ -52,7 +52,7 @@ public abstract class SnakeProBrainParent extends JApplet implements
 		this.initializeMenu();
 
 		// Sets up the back (off-screen) buffer for drawing, named image
-		this.image = this.createImage(this.getSize().width, Preferences.GAMEBOARDHEIGHT);
+		this.image = this.createImage(this.getSize().width+10*Preferences.CELL_SIZE, Preferences.GAMEBOARDHEIGHT);
 		this.screen = this.image.getGraphics(); // screen holds the drawing routines
 
 		// add a central panel which holds the buffer (the game board)
